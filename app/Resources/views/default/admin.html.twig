@@ -1,4 +1,4 @@
-{% extends 'base.html.twig' %}
+{% extends 'back.html.twig' %}
 
 {% block body %}
 
@@ -12,5 +12,12 @@
 
 		<h4>{{ role }}</h4>
 	{% endfor %}
+
+{% endblock %}
+{% block breadcrumb %}
+<ol class="breadcrumb">
+  <li class="breadcrumb-item"><a href="#">Tableau de bord</a></li>
+  <li class="breadcrumb-item active">Liste categorie</li>
+</ol>
 
 {% endblock %}
