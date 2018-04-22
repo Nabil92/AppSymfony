@@ -31,6 +31,11 @@ class DefaultController extends Controller
         
     }
 
+    public function GitMss(){
+
+        echo "bonjour tout le monde";
+    }
+
 
 
 }
