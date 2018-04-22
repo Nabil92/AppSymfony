@@ -1,0 +1,32 @@
+{% extends 'back.html.twig' %}
+
+{% block content %}
+    <h1>Nouvelle Categorie</h1>
+
+    {{ form_start(form) }}
+    <div class="form-group">
+        {{ form_row(form.libelle,{'attr':{'class':'form-control'}}) }}
+    </div>
+      <div class="form-group">
+        {{ form_row(form.description,{'attr':{'class':'form-control'}}) }}
+    </div>
+      <div class="form-group">
+        {{ form_row(form.slug,{'attr':{'class':'form-control'}}) }}
+    </div>
+        
+        <input class="btn btn-primary" type="submit" value="Enregistre" />
+        <a class="btn btn-secondary" href="{{ path('admin_category_index') }}">Retour</a>
+    {{ form_end(form) }}
+
+    
+            
+      
+{% endblock %}
+{% block breadcrumb %}
+<ol class="breadcrumb">
+  <li class="breadcrumb-item"><a href="#">Tableau de bord</a></li>
+  <li class="breadcrumb-item "><a href="#">Liste categorie</a></li>
+  <li class="breadcrumb-item active">Nouvelle Categorie</li>
+</ol>
+
+{% endblock %}
