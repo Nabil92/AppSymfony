@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+	<h1> Page Admin	</h1>
+	<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rerum odit, cum veniam recusandae facilis harum magnam nam reiciendis asperiores illum voluptates itaque optio, explicabo tempore non nihil! Eligendim.</p>
+
+	<h4>{{ app.user.id }}</h4>
+	<h4>{{ app.user.username }}</h4>
+<h4>{{ app.user.email }}</h4>
+	 {% for role in app.user.roles %}
+
+		<h4>{{ role }}</h4>
+	{% endfor %}
+
+{% endblock %}

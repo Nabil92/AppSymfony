@@ -1,0 +1,13 @@
+{% extends "@FOSUser/layout.html.twig" %}
+
+{% block fos_user_content %}
+	<div class="container">
+		<div class="row">
+			<div class="col-md-6 col-center-block">
+				<h3>Se Connecter</h3>
+				 {{ include('@FOSUser/Security/login_content.html.twig') }}
+			</div>
+		</div>
+	</div>
+   
+{% endblock fos_user_content %}
