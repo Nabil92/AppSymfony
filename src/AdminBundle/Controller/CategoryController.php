@@ -48,6 +48,8 @@ class CategoryController extends Controller
             $em->persist($category);
             $em->flush();
 
+            $this->addFlash('success',"la nouvelle categorie ".$category->getLibelle()." est ajouter avec succés.");
+
             return $this->redirectToRoute('admin_category_index');
         }
 
@@ -87,6 +89,8 @@ class CategoryController extends Controller
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $this->getDoctrine()->getManager()->flush();
+
+    $this->addFlash('success',"le categorie ".$category->getLibelle()." a été modifier avec succés.");
 
             return $this->redirectToRoute('admin_category_index');
         }

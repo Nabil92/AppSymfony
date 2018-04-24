@@ -1,0 +1,57 @@
+{% extends 'back.html.twig' %}
+
+{% block content %}
+    <h1>Post</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ post.id }}</td>
+            </tr>
+            <tr>
+                <th>Title</th>
+                <td>{{ post.title }}</td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>{{ post.description }}</td>
+            </tr>
+            <tr>
+                <th>Body</th>
+                <td>{{ post.body }}</td>
+            </tr>
+            <tr>
+                <th>Slug</th>
+                <td>{{ post.slug }}</td>
+            </tr>
+            <tr>
+                <th>Datepublish</th>
+                <td>{{ post.datepublish | date('d-m-Y') }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('admin_post_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('admin_post_edit', { 'id': post.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}
+
+{% block breadcrumb %}
+<ol class="breadcrumb">
+  <li class="breadcrumb-item"><a href="#">Tableau de bord</a></li>
+  <li class="breadcrumb-item "><a href="#">Liste Article</a></li>
+  <li class="breadcrumb-item active">Detaile Article</li>
+</ol>
+
+{% endblock %}

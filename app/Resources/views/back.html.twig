@@ -6,7 +6,10 @@
         {% block stylesheets %}{% endblock %}
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
         <link rel="stylesheet" type="text/css" href="{{ asset('back/bootstrap.css') }}">
+        <link rel="stylesheet" type="text/css" href="{{ asset('back/_bootswatch.scss') }}">
+        <link rel="stylesheet" type="text/css" href="{{ asset('back/variables.scss') }}">
         <link rel="stylesheet" href="{{ asset('fontawesome/css/fontawesome-all.css')}}">
+       
         <style type="text/css">
 
 
@@ -74,7 +77,7 @@
    </div>
 
        <div class="row">
-           <div class="col-md-3">
+           <div class="col-md-2">
 
                <ul class="list-group">
                    <li class="list-group-item"><a href="">Tableau de bord</a></li>
@@ -89,8 +92,8 @@
                </ul>
 
            </div>
-           <div class="col-md-9">
-               
+           <div class="col-md-10">
+               {% include 'alert.html.twig' %}
                {% block content %}{% endblock %}
            </div>
        </div>
@@ -99,3 +102,4 @@
         {% block javascripts %}{% endblock %}
     </body>
 </html>
+

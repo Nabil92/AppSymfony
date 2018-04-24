@@ -1,0 +1,51 @@
+{% extends 'back.html.twig' %}
+
+{% block content %}
+    <h1>Liste Article</h1>
+ <div align="right"> <a class="btn btn-info" href="{{ path('admin_post_new') }}" ><i class="fa fa-plus"></i>  Nouveau Article</a></div>
+ <br>
+    <table class="table">
+        <thead>
+            <tr>
+                
+                <th>Title</th>
+                <th>Description</th>
+                <th>Body</th>
+                <th>Slug</th>
+                <th>Datepublish</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for post in posts %}
+            <tr>
+                
+                <td>{{ post.title }}</td>
+                <td>{{ post.description }}</td>
+                <td>{{ post.body }}</td>
+                <td>{{ post.slug }}</td>
+                <td>{{ post.datepublish | date('d-m-Y') }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a class="btn btn-info" href="{{ path('admin_post_show', { 'id': post.id }) }}"> <i class="fa fa-search"></i></a>
+                        </li>
+                        <li>
+                            <a class="btn btn-warning" href="{{ path('admin_post_edit', { 'id': post.id }) }}"><i class="fa fa-edit"></i></a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    
+{% endblock %}
+{% block breadcrumb %}
+<ol class="breadcrumb">
+  <li class="breadcrumb-item"><a href="#">Tableau de bord</a></li>
+  <li class="breadcrumb-item active">Liste des Article</li>
+</ol>
+
+{% endblock %}

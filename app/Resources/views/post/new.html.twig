@@ -1,0 +1,51 @@
+{% extends 'back.html.twig' %}
+
+{% block content %}
+    <h1>Nouveau Article</h1>
+
+    {{ form_start(form) }}
+    <div class="row">
+        <div class="col-md-8">
+            <div class="form-group">
+                {{ form_row(form.title,{'attr':{'class':'form-control'}}) }}
+            </div>
+             <div class="form-group">
+                {{ form_row(form.description,{'attr':{'class':'form-control'}}) }}
+            </div>
+            <div class="form-group">
+                {{ form_row(form.body,{'attr':{'class':'form-control'}}) }}
+            </div>
+            <div class="form-group">
+                {{ form_row(form.slug,{'attr':{'class':'form-control'}}) }}
+            </div>
+            <div class="form-group">
+                {{ form_row(form.categoryes ,{'attr':{'class':'form-control'}}) }}
+            </div>
+
+        </div>
+
+        <div class="col-md-4">
+              <div class="form-group">
+                {{ form_row(form.datepublish,{'attr':{'class':'form-control'}}) }}
+            </div>
+            <input class="btn btn-primary" type="submit" value="Enregistre" />
+            <a class="btn btn-secondary" href="{{ path('admin_post_index') }}">Retour</a>
+        </div>
+    </div>
+
+        
+        
+    {{ form_end(form) }}
+
+    
+            
+    
+{% endblock %}
+{% block breadcrumb %}
+<ol class="breadcrumb">
+  <li class="breadcrumb-item"><a href="#">Tableau de bord</a></li>
+  <li class="breadcrumb-item "><a href="#">Liste Article</a></li>
+  <li class="breadcrumb-item active">Nouveau Article</li>
+</ol>
+
+{% endblock %}
