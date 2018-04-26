@@ -3,6 +3,7 @@
 namespace AdminBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Post
@@ -63,6 +64,16 @@ class Post
      */
 
     private $categoryes;
+
+
+    /**
+     * @var string
+     *
+     * @Assert\NotBlank(message="Merci de mettre un image")
+     * @Assert\File(mimeTypes={ "image/png","image/jpeg", "image/gif"}, mimeTypesMessage="le mime type que vous monter invalid {{ type }} ,voici les mime types autoriser {{ types }}",maxSize="2M")
+     * @ORM\Column(name="url", type="string", length=255)
+     */
+    private $image;
 
 
     /**
@@ -194,5 +205,45 @@ class Post
     {
         return $this->datepublish;
     }
-}
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->categoryes = new \Doctrine\Common\Collections\ArrayCollection();
+    }
 
+    /**
+     * Add categorye
+     *
+     * @param \AdminBundle\Entity\Category $categorye
+     *
+     * @return Post
+     */
+    public function addCategorye(\AdminBundle\Entity\Category $categorye)
+    {
+        $this->categoryes[] = $categorye;
+
+        return $this;
+    }
+
+    /**
+     * Remove categorye
+     *
+     * @param \AdminBundle\Entity\Category $categorye
+     */
+    public function removeCategorye(\AdminBundle\Entity\Category $categorye)
+    {
+        $this->categoryes->removeElement($categorye);
+    }
+
+    /**
+     * Get categoryes
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getCategoryes()
+    {
+        return $this->categoryes;
+    }
+}

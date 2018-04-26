@@ -7,6 +7,7 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 
 class PostType extends AbstractType
 {
@@ -28,7 +29,8 @@ class PostType extends AbstractType
             'expanded' => false,
             'multiple' => true
 
-        ));
+        ))
+       ->add('image',FileType::class);
     }/**
      * {@inheritdoc}
      */

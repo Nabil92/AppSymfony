@@ -3,6 +3,7 @@
 namespace AdminBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Post
@@ -63,6 +64,16 @@ class Post
      */
 
     private $categoryes;
+
+
+    /**
+     * @var string
+     *
+     * @Assert\NotBlank(message="Merci de mettre un image")
+     * @Assert\File(mimeTypes={ "image/png","image/jpeg", "image/gif"}, mimeTypesMessage="le mime type que vous monter invalid {{ type }} ,voici les mime types autoriser {{ types }}",maxSize="2M")
+     * @ORM\Column(name="url", type="string", length=255)
+     */
+    private $image;
 
 
     /**
@@ -234,5 +245,29 @@ class Post
     public function getCategoryes()
     {
         return $this->categoryes;
+    }
+
+    /**
+     * Set image
+     *
+     * @param string $image
+     *
+     * @return Post
+     */
+    public function setImage($image)
+    {
+        $this->image = $image;
+
+        return $this;
+    }
+
+    /**
+     * Get image
+     *
+     * @return string
+     */
+    public function getImage()
+    {
+        return $this->image;
     }
 }

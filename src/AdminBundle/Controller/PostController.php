@@ -45,6 +45,16 @@ class PostController extends Controller
 
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
+            $file =$post->getImage();
+
+            $FileName= uniqid().'.'.$file->guessExtension();
+            $file->move($this->getParameter('uploads_posts_directory'),$FileName);
+
+            $post->setImage($FileName);
+
+
+
+
             $em->persist($post);
             $em->flush();
 
