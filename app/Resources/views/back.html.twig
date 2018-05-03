@@ -9,7 +9,8 @@
         <link rel="stylesheet" type="text/css" href="{{ asset('back/_bootswatch.scss') }}">
         <link rel="stylesheet" type="text/css" href="{{ asset('back/variables.scss') }}">
         <link rel="stylesheet" href="{{ asset('fontawesome/css/fontawesome-all.css')}}">
-       
+
+       <link rel="stylesheet" href="https://bootswatch.com/4/yeti/bootstrap.min.css">
         <style type="text/css">
 
 
@@ -68,11 +69,15 @@
                
           
        </div>
-       <div class="col-md-7" align="right">
-           <select name="accesRapid" id="" class="">
-               <option value="">Nouveau Article</option>
-               <option value="">Nouvelle categorie</option>
+       <div class="col-md-7" align="right" id="app">
+        {% verbatim %}
+          
+       
+           <select v-on:change="getAccesRapid" name="accesRapid" v-model="accesRapid">
+          <option v-for="acces in listeAccesRapide" v-bind:value="acces.lien">{{ acces.libelle }}</option>
+               
            </select>
+         {% endverbatim %}
        </div>
    </div>
 
@@ -93,12 +98,35 @@
 
            </div>
            <div class="col-md-10">
+            
                {% include 'alert.html.twig' %}
+               
                {% block content %}{% endblock %}
            </div>
        </div>
    </div>
-        
+       <script  src="{{ asset('js/vue.min.js') }}"></script>
+        <script >
+          var app = new Vue({
+                  el: '#app',
+                  data: {
+                      accesRapid :"",
+                      listeAccesRapide:[
+
+                          {libelle: "Acces rapide",lien :""},
+                          {libelle: "Nouveau Article",lien :"/admin/post/new"},
+                          {libelle: "Nouvelle categorie",lien :"/admin/category/new"}
+
+                      ]
+                  },
+                  methods:{
+                    getAccesRapid:function(){
+                      window.location= this.accesRapid
+                    }
+                  }
+
+                })
+        </script> 
         {% block javascripts %}{% endblock %}
     </body>
 </html>

@@ -3,29 +3,30 @@
 {% block content %}
     <h1>Liste Article</h1>
  <div align="right"> <a class="btn btn-info" href="{{ path('admin_post_new') }}" ><i class="fa fa-plus"></i>  Nouveau Article</a></div>
- <br>
 
-
-
-
- <div class="row">
-    {% for post in posts %}
-  <div class="col-sm-6 col-md-4">
-    <div class="thumbnail">
-      <img src="{{ asset('uploads/posts/'~ post.image) }}" alt="...">
-      <div class="caption">
-        <h3>{{ post.title }}</h3>
-        <p>{{ post.description }}</p>
-        <p><a href="href="{{ path('admin_post_show', { 'id': post.id }) }}"" class="btn btn-primary" role="button">Afficher</a> 
-            <a href=""{{ path('admin_post_edit', { 'id': post.id }) }}"" class="btn btn-default" role="button">Editer</a></p>
-      </div>
-    </div>
+<br>
+ 
+<div class="row">
+   {% for post in posts %}
+   <div class="card col-sm-6 col-md-4">
+  <h3 class="card-header">{{ post.title }}</h3>
+  <div class="card-body">
+   
   </div>
-
-    
-   {% endfor %}      
-            
-   </div>        
+  <img style="height: 200px; width: 100%; display: block;" src="{{ asset('uploads/posts/'~ post.image) }}" alt="Card image">
+  <div class="card-body">
+    <p class="card-text">{{ post.description }}</p>
+  </div>
+  
+  <div class="card-body">
+    <a href="{{ path('admin_post_show', { 'id': post.id }) }}" class="card-link btn btn-primary">Detaille</a>
+    <a href="{{ path('admin_post_edit', { 'id': post.id }) }}" class="card-link btn btn-default">Editer</a>
+  </div>
+  
+</div>
+<br>
+{% endfor %}  
+</div>
     
 {% endblock %}
 {% block breadcrumb %}

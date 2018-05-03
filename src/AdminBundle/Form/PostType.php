@@ -30,7 +30,7 @@ class PostType extends AbstractType
             'multiple' => true
 
         ))
-       ->add('image',FileType::class);
+       ->add('image',FileType::class , array('label' => 'Image png ou jpeg', 'data_class'=>null ,  'required'   => false));
     }/**
      * {@inheritdoc}
      */

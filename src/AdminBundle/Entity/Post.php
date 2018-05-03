@@ -69,7 +69,7 @@ class Post
     /**
      * @var string
      *
-     * @Assert\NotBlank(message="Merci de mettre un image")
+     * @Assert\NotBlank(groups={"new"},message="Merci de mettre un image")
      * @Assert\File(mimeTypes={ "image/png","image/jpeg", "image/gif"}, mimeTypesMessage="le mime type que vous monter invalid {{ type }} ,voici les mime types autoriser {{ types }}",maxSize="2M")
      * @ORM\Column(name="url", type="string", length=255)
      */
