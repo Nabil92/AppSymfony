@@ -97,6 +97,7 @@ class PostController extends Controller
         $editForm->handleRequest($request);
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {
+            //en cas de la modification 
              if($post->getImage()== null){
                 $post->setImage($oldPost);
 

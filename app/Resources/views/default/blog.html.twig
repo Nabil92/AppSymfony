@@ -1,0 +1,70 @@
+{% extends 'base.html.twig' %}
+
+{% block content %}
+    <section class="hero  is-primary is-bold">
+  <div class="hero-body">
+    <div class="container">
+      <h1 class="title">
+        Blog
+      </h1>
+      <h2 class="subtitle">
+        Primary bold subtitle
+      </h2>
+    </div>
+  </div>
+</section>
+  <br>
+
+  <div class="container">
+    <div class="columns">
+        <div class="column is-four-fifths">
+          {% for post in posts %}
+                  <div class="box column">
+                      <article class="media">
+                          <figure class="media-left">
+                            <p class="image is-128x128">
+                               <a href="{{ path('showblog',{'id':post.id })}}"><img src="{{asset('uploads/posts/'~ post.image) }}"></a>
+                            </p>
+                          </figure>
+                          <div class="media-content">
+                            <div class="content">
+                             
+                              <p>
+                                <strong><a href="{{ path('showblog',{'id':post.id })}}">{{ post.title}}</a></strong> 
+                                <br>
+                                {{ post.body }}
+                              </p>
+                            
+                            </div>
+                                                      <nav class="level is-mobile">
+                                  <div class="level-left">
+                                    {{ post.datepublish | date()}}
+                                    
+                                  </div>
+                                </nav>
+                            
+                          </div>
+                          
+                        </article>
+                
+                  </div>
+          {% endfor %}
+
+        </div>
+
+  
+   
+</div>
+{{ knp_pagination_render(posts) }}
+  </div>
+
+   
+
+    
+
+
+{% endblock %}
+
+{% block stylesheets %}
+
+{% endblock %}

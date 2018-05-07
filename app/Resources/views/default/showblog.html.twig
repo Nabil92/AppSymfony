@@ -1,0 +1,51 @@
+{% extends 'base.html.twig' %}
+
+{% block content %}
+    <section class="hero  is-primary is-bold">
+  <div class="hero-body">
+    <div class="container">
+      <h1 class="title">
+        Blog
+      </h1>
+      <h2 class="subtitle">
+        Primary bold subtitle
+      </h2>
+    </div>
+  </div>
+</section>
+  <br>
+
+  <div class="container">
+    <div class="columns">
+      <div class="column is-four-fifths">
+        <div class="card">
+          <div class="card-image">
+            <figure class="image is-3by2">
+              <img src="{{ asset('uploads/posts/'~ posts.image)}}" alt="Placeholder image">
+            </figure>
+          </div>
+          <div class="card-content">
+            <div class="media">
+             
+              <div class="media-content">
+                <p class="title is-4">{{posts.title}}</p>
+               
+              </div>
+            </div>
+
+            <div class="content">
+              {{posts.body}}
+              <br>
+              <time>{{ posts.datepublish | date() }}</time>
+            </div>
+            </div>
+         </div>
+      </div>
+    </div>
+  </div>
+
+{% endblock %}
+
+{% block stylesheets %}
+
+{% endblock %}
